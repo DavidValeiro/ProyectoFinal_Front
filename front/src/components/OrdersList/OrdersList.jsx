@@ -14,6 +14,14 @@ const STATUS_STYLES = {
   Cancelled: "bg-error-container text-on-error-container",
 };
 
+// Nombres en español de cada estado del pedido.
+const STATUS_LABELS = {
+  Pending: "Pendiente",
+  Shipped: "Enviado",
+  Delivered: "Entregado",
+  Cancelled: "Cancelado",
+};
+
 const OrdersList = () => {
   const { format } = useCurrency();
   const [orders, setOrders] = useState([]);
@@ -85,7 +93,7 @@ const OrdersList = () => {
                   STATUS_STYLES[order.orderStatus] ?? "bg-surface-container text-secondary"
                 }`}
               >
-                {order.orderStatus}
+                {STATUS_LABELS[order.orderStatus] ?? order.orderStatus}
               </span>
               <button
                 type="button"

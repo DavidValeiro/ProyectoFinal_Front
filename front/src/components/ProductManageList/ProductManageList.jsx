@@ -34,7 +34,7 @@ const ProductManageList = ({ product, onEdit, onDelete }) => {
           onClick={() => onEdit(product.id)}
           className="bg-primary-container text-on-primary font-semibold px-sm py-xs rounded-lg neu-raised neu-btn-active transition-all hover:bg-primary"
         >
-          Edit
+          Editar
         </button>
         <button
           onClick={() => onDelete(product.id)}

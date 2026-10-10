@@ -242,12 +242,12 @@ function ProductEditModal({ product, categories = [], onClose, onSave }) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-              <Field label="Badge">
+              <Field label="Distintivo">
                 <input
                   className={inputCls}
                   value={badge}
                   onChange={(event) => setBadge(event.target.value)}
-                  placeholder="Ej: NEW"
+                  placeholder="Ej: Nuevo"
                 />
               </Field>
               <Field label="Categoría">

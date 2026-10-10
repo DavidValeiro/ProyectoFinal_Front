@@ -23,7 +23,7 @@ function CartRow({ item, onIncrement, onDecrement, onRemove }) {
           type="button"
           onClick={() => onRemove(item.id)}
           className="material-symbols-outlined text-secondary hover:text-error transition-all p-base shrink-0"
-          aria-label={`Remove ${item.name}`}
+          aria-label={`Eliminar ${item.name}`}
         >
           delete
         </button>
@@ -41,7 +41,7 @@ function CartRow({ item, onIncrement, onDecrement, onRemove }) {
             type="button"
             onClick={() => onDecrement(item.id)}
             className="material-symbols-outlined text-secondary hover:text-primary transition-all px-sm py-sm"
-            aria-label={`Decrease quantity of ${item.name}`}
+            aria-label={`Reducir la cantidad de ${item.name}`}
           >
             remove
           </button>
@@ -52,7 +52,7 @@ function CartRow({ item, onIncrement, onDecrement, onRemove }) {
             type="button"
             onClick={() => onIncrement(item.id)}
             className="material-symbols-outlined text-secondary hover:text-primary transition-all px-sm py-sm"
-            aria-label={`Increase quantity of ${item.name}`}
+            aria-label={`Aumentar la cantidad de ${item.name}`}
           >
             add
           </button>
@@ -144,7 +144,7 @@ function Buying({ showOverlay = false }) {
 
       <div
         role="dialog"
-        aria-label="Shopping cart"
+        aria-label="Carrito de compra"
         className={`absolute top-full right-0 mt-2.5 z-50 flex flex-col overflow-hidden rounded-2xl w-[min(22rem,calc(100vw-1.5rem))] max-h-[calc(100dvh-6rem)] bg-surface-container border border-surface-variant/30 neu-elevated transition-all duration-300 ease-out origin-top-right motion-reduce:transition-none max-sm:fixed max-sm:left-3 max-sm:right-3 max-sm:top-[4.5rem] max-sm:mt-0 max-sm:w-[calc(100vw-1.5rem)] ${
           open
             ? "opacity-100 translate-y-0 scale-100"
@@ -176,7 +176,7 @@ function Buying({ showOverlay = false }) {
             type="button"
             onClick={closeCart}
             className="material-symbols-outlined text-secondary hover:text-primary transition-all p-base neu-button-raised rounded-full"
-            aria-label="Close shopping cart"
+            aria-label="Cerrar carrito"
           >
             close
           </button>

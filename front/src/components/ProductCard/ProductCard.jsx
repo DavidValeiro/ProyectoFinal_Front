@@ -60,14 +60,14 @@ const ProductCard = ({ product, onAddToCart }) => {
             to={detailTo}
             className="bg-surface-container-highest text-primary font-semibold px-md py-sm rounded-lg neu-raised neu-btn-active transition-all hover:bg-primary-container hover:text-on-primary flex-1 text-center"
           >
-            View Detail
+            Ver detalle
           </Link>
           <button
             type="button"
             onClick={onAddToCart}
             className="bg-primary-container text-on-primary font-semibold px-md py-sm rounded-lg neu-raised neu-btn-active transition-all hover:bg-primary flex-1"
           >
-            Add to Cart
+            Añadir al carrito
           </button>
         </div>
       </div>

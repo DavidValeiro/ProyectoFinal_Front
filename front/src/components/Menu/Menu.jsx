@@ -12,7 +12,7 @@ import AccountMenu from "../AccountMenu/AccountMenu";
 
 // Enlaces mostrados por defecto en la cabecera.
 const defaultNavItems = [
-  { label: "Home", to: "/" },
+  { label: "Inicio", to: "/" },
   { label: "Catálogo", to: "/Catalog" },
   { label: "Administración", to: "/Manage", adminOnly: true },
 ];
@@ -140,8 +140,8 @@ function Menu({
                 className="p-base neu-button-raised rounded-full text-secondary hover:text-primary transition-all"
                 aria-label={
                   items.length > 0
-                    ? `Shopping cart, ${items.length} artículos`
-                    : "Shopping cart"
+                    ? `Carrito de compra, ${items.length} artículos`
+                    : "Carrito de compra"
                 }
               >
                 <span
@@ -169,7 +169,7 @@ function Menu({
                 type="button"
                 onClick={handleAccount}
                 className="material-symbols-outlined text-secondary hover:text-primary transition-all p-base neu-button-raised rounded-full"
-                aria-label="Account"
+                aria-label="Cuenta"
                 aria-expanded={accountOpen}
               >
                 account_circle
@@ -187,7 +187,7 @@ function Menu({
             type="button"
             onClick={() => setOpen(!open)}
             className="material-symbols-outlined text-secondary hover:text-primary transition-all p-base neu-button-raised rounded-full md:hidden"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
           >
             {open ? "close" : "menu"}
           </button>

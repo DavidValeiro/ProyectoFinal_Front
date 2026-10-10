@@ -8,7 +8,7 @@ const currentYear = new Date().getFullYear();
 
 // Enlaces principales del pie, coherentes con los de la cabecera.
 const navItems = [
-  { label: "Home", to: "/" },
+  { label: "Inicio", to: "/" },
   { label: "Catálogo", to: "/Catalog" },
   { label: "Administración", to: "/Manage", adminOnly: true },
 ];
@@ -49,7 +49,7 @@ function Footer({ brand = "MOUSIN" }) {
 
         {/* Aviso de copyright con el año en curso */}
         <p className="font-body-md text-body-md text-on-surface-variant text-center">
-          © {currentYear} {brand} Peripherals. Todos los derechos reservados..
+          © {currentYear} {brand} Periféricos. Todos los derechos reservados.
         </p>
       </div>
     </footer>

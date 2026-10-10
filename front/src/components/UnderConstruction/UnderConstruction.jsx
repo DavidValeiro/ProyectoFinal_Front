@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 // Nombres legibles de las rutas conocidas de la app.
 const PAGE_NAMES = {
-  "/": "Home",
+  "/": "Inicio",
   "/catalog": "Catálogo",
   "/manage": "Gestión de productos",
 };
@@ -17,7 +17,7 @@ function getPageName(pathname) {
   if (PAGE_NAMES[normalized]) return PAGE_NAMES[normalized];
   if (normalized.startsWith("/producto")) return "Producto";
   const segment = normalized.split("/").filter(Boolean).pop();
-  if (!segment) return "Home";
+  if (!segment) return "Inicio";
   return segment.charAt(0).toUpperCase() + segment.slice(1);
 }
 

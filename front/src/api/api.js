@@ -4,7 +4,7 @@
 // URL base de la API del back. Se define en Vercel con VITE_API_URL; sin ella,
 // las peticiones son relativas (misma origen). En desarrollo local se usa el
 // valor de .env.local.
-const API_URL = import.meta.env.VITE_API_URL ?? "";
+const API_URL = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
 
 // Convierte el _id de MongoDB en un id normal para el resto de la app.
 const withId = (item) => {
