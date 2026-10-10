@@ -1,0 +1,224 @@
+/* ================================================================== *
+ * Palette de MOUSIN · variables por `data-theme`
+ * ------------------------------------------------------------------
+ * El modo noche conserva EXACTAMENTE los colores actuales de la app.
+ * El modo día se deriva de los tokens claros ya presentes en la config.
+ *
+ * Los valores son canales RGB separados por espacios para que Tailwind
+ * v3 (config CDN) genere `rgb(var(--ch-x) / <alpha-value>)` y así
+ * funcionen también los modificadores de opacidad (/20, /40 ...).
+ *
+ * Cargar DESPUÉS de ui-theme/theme.css para sobrescribir también los
+ * tokens --ui-* del toggle con la paleta de la app.
+ * ================================================================== */
+
+/* ---- Por defecto (respaldo): misma paleta que noche ---------------- */
+/* Imagen de detalle: con fondo oscuro se funde con lighten; en día se
+   muestra tal cual para no perderse sobre el fondo claro. */
+.product-detail-image {
+  mix-blend-mode: lighten;
+}
+
+:root {
+  --ch-on-surface-variant: 218 194 177;
+  --ch-secondary: 200 198 199;
+  --ch-tertiary-container: 0 188 227;
+  --ch-on-tertiary-fixed: 0 31 40;
+  --ch-secondary-container: 73 73 74;
+  --ch-on-secondary-fixed-variant: 71 70 71;
+  --ch-on-background: 229 226 227;
+  --ch-on-surface: 229 226 227;
+  --ch-on-error: 105 0 5;
+  --ch-surface-dim: 19 19 20;
+  --ch-secondary-fixed: 229 226 227;
+  --ch-background: 19 19 20;
+  --ch-surface-container-high: 42 42 43;
+  --ch-on-secondary-fixed: 27 27 28;
+  --ch-primary-fixed-dim: 255 183 121;
+  --ch-primary-fixed: 255 220 193;
+  --ch-error: 255 180 171;
+  --ch-primary-container: 244 150 56;
+  --ch-inverse-surface: 229 226 227;
+  --ch-surface-tint: 255 183 121;
+  --ch-on-tertiary: 0 53 66;
+  --ch-surface-variant: 53 52 54;
+  --ch-on-error-container: 255 218 214;
+  --ch-on-tertiary-fixed-variant: 0 78 95;
+  --ch-on-tertiary-container: 0 71 87;
+  --ch-tertiary: 74 216 255;
+  --ch-on-secondary-container: 186 184 185;
+  --ch-inverse-on-surface: 49 48 49;
+  --ch-tertiary-fixed-dim: 67 214 254;
+  --ch-surface-bright: 57 57 58;
+  --ch-surface-container: 32 31 32;
+  --ch-surface-container-highest: 53 52 54;
+  --ch-on-primary: 76 39 0;
+  --ch-outline: 162 141 125;
+  --ch-on-secondary: 48 48 49;
+  --ch-inverse-primary: 142 78 0;
+  --ch-on-primary-fixed-variant: 108 58 0;
+  --ch-error-container: 147 0 10;
+  --ch-surface-container-low: 28 27 28;
+  --ch-surface: 19 19 20;
+  --ch-secondary-fixed-dim: 200 198 199;
+  --ch-on-primary-container: 99 53 0;
+  --ch-outline-variant: 84 68 54;
+  --ch-tertiary-fixed: 180 235 255;
+  --ch-on-primary-fixed: 46 21 0;
+  --ch-primary: 255 185 124;
+  --ch-surface-container-lowest: 14 14 15;
+
+  --neu-shadow-dark: #000000;
+  --neu-shadow-light: #2a2a2b;
+
+  --vi-badge-bg: #f49638;
+  --vi-badge-on: #131314;
+
+  --ui-bg: #131314;
+  --ui-surface: #2a2a2b;
+  --ui-surface-2: #201f20;
+  --ui-text: #e5e2e3;
+  --ui-muted: #c8c6c7;
+  --ui-line: #353436;
+  --ui-accent: #f49638;
+  --ui-accent-soft: #633500;
+  --ui-glow: rgba(244, 150, 56, 0.12);
+}
+
+/* ---- Noche: valores actuales de la app ------------------------------ */
+:root[data-theme='night'] {
+  --ch-on-surface-variant: 218 194 177;
+  --ch-secondary: 200 198 199;
+  --ch-tertiary-container: 0 188 227;
+  --ch-on-tertiary-fixed: 0 31 40;
+  --ch-secondary-container: 73 73 74;
+  --ch-on-secondary-fixed-variant: 71 70 71;
+  --ch-on-background: 229 226 227;
+  --ch-on-surface: 229 226 227;
+  --ch-on-error: 105 0 5;
+  --ch-surface-dim: 19 19 20;
+  --ch-secondary-fixed: 229 226 227;
+  --ch-background: 19 19 20;
+  --ch-surface-container-high: 42 42 43;
+  --ch-on-secondary-fixed: 27 27 28;
+  --ch-primary-fixed-dim: 255 183 121;
+  --ch-primary-fixed: 255 220 193;
+  --ch-error: 255 180 171;
+  --ch-primary-container: 244 150 56;
+  --ch-inverse-surface: 229 226 227;
+  --ch-surface-tint: 255 183 121;
+  --ch-on-tertiary: 0 53 66;
+  --ch-surface-variant: 53 52 54;
+  --ch-on-error-container: 255 218 214;
+  --ch-on-tertiary-fixed-variant: 0 78 95;
+  --ch-on-tertiary-container: 0 71 87;
+  --ch-tertiary: 74 216 255;
+  --ch-on-secondary-container: 186 184 185;
+  --ch-inverse-on-surface: 49 48 49;
+  --ch-tertiary-fixed-dim: 67 214 254;
+  --ch-surface-bright: 57 57 58;
+  --ch-surface-container: 32 31 32;
+  --ch-surface-container-highest: 53 52 54;
+  --ch-on-primary: 76 39 0;
+  --ch-outline: 162 141 125;
+  --ch-on-secondary: 48 48 49;
+  --ch-inverse-primary: 142 78 0;
+  --ch-on-primary-fixed-variant: 108 58 0;
+  --ch-error-container: 147 0 10;
+  --ch-surface-container-low: 28 27 28;
+  --ch-surface: 19 19 20;
+  --ch-secondary-fixed-dim: 200 198 199;
+  --ch-on-primary-container: 99 53 0;
+  --ch-outline-variant: 84 68 54;
+  --ch-tertiary-fixed: 180 235 255;
+  --ch-on-primary-fixed: 46 21 0;
+  --ch-primary: 255 185 124;
+  --ch-surface-container-lowest: 14 14 15;
+
+  --neu-shadow-dark: #000000;
+  --neu-shadow-light: #2a2a2b;
+
+  --vi-badge-bg: #f49638;
+  --vi-badge-on: #131314;
+
+  --ui-bg: #131314;
+  --ui-surface: #2a2a2b;
+  --ui-surface-2: #201f20;
+  --ui-text: #e5e2e3;
+  --ui-muted: #c8c6c7;
+  --ui-line: #353436;
+  --ui-accent: #f49638;
+  --ui-accent-soft: #633500;
+  --ui-glow: rgba(244, 150, 56, 0.12);
+}
+
+/* ---- Día: paleta clara derivada, mismo acento naranja ------------------ */
+:root[data-theme='day'] .product-detail-image {
+  mix-blend-mode: normal;
+}
+
+:root[data-theme='day'] {
+  --ch-on-surface-variant: 93 86 82;
+  --ch-secondary: 93 91 92;
+  --ch-tertiary-container: 180 235 255;
+  --ch-on-tertiary-fixed: 0 31 40;
+  --ch-secondary-container: 224 224 225;
+  --ch-on-secondary-fixed-variant: 69 67 68;
+  --ch-on-background: 28 27 26;
+  --ch-on-surface: 28 27 26;
+  --ch-on-error: 255 255 255;
+  --ch-surface-dim: 216 213 210;
+  --ch-secondary-fixed: 46 44 45;
+  --ch-background: 243 241 239;
+  --ch-surface-container-high: 230 227 224;
+  --ch-on-secondary-fixed: 255 255 255;
+  --ch-primary-fixed-dim: 217 122 31;
+  --ch-primary-fixed: 244 150 56;
+  --ch-error: 179 38 30;
+  --ch-primary-container: 244 150 56;
+  --ch-inverse-surface: 46 44 45;
+  --ch-surface-tint: 184 117 44;
+  --ch-on-tertiary: 255 255 255;
+  --ch-surface-variant: 222 219 215;
+  --ch-on-error-container: 92 14 8;
+  --ch-on-tertiary-fixed-variant: 0 78 95;
+  --ch-on-tertiary-container: 0 53 66;
+  --ch-tertiary: 0 106 122;
+  --ch-on-secondary-container: 46 44 45;
+  --ch-inverse-on-surface: 236 235 233;
+  --ch-tertiary-fixed-dim: 67 214 254;
+  --ch-surface-bright: 249 248 246;
+  --ch-surface-container: 235 232 229;
+  --ch-surface-container-highest: 222 219 215;
+  --ch-on-primary: 76 39 0;
+  --ch-outline: 133 116 105;
+  --ch-on-secondary: 255 255 255;
+  --ch-inverse-primary: 255 185 124;
+  --ch-on-primary-fixed-variant: 90 47 0;
+  --ch-error-container: 249 222 220;
+  --ch-surface-container-low: 240 238 236;
+  --ch-surface: 246 245 243;
+  --ch-secondary-fixed-dim: 93 91 92;
+  --ch-on-primary-container: 74 38 0;
+  --ch-outline-variant: 216 199 187;
+  --ch-tertiary-fixed: 180 235 255;
+  --ch-on-primary-fixed: 46 21 0;
+  --ch-primary: 184 117 44;
+  --ch-surface-container-lowest: 255 255 255;
+
+  --neu-shadow-dark: #b6b2ac;
+  --neu-shadow-light: #ffffff;
+
+  --vi-badge-bg: #f49638;
+  --vi-badge-on: #4a2600;
+
+  --ui-bg: #f3f1ef;
+  --ui-surface: #ffffff;
+  --ui-surface-2: #ebe8e5;
+  --ui-text: #1c1b1a;
+  --ui-muted: #5d5b5c;
+  --ui-line: #dedbd7;
+  --ui-accent: #b8752c;
+  --ui-accent-soft: #ffdcc1;
+  --ui-glow: rgba(184, 117, 44, 0.12);
+}

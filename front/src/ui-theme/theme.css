@@ -1,0 +1,305 @@
+/* ================================================================== *
+ * ui-theme · tokens + ThemeToggle + View Transitions
+ * ------------------------------------------------------------------
+ * Importa este archivo UNA vez en el entry de tu app:
+ *   - Vite:            import '../../ui-theme/theme.css' en main.jsx
+ *   - Next (App Router): import './ui-theme/theme.css' en globals.css
+ *   - Cualquier CSS:   @import '../theme.css';
+ *
+ * NO pinta html/body ni define utlidades de tema: eso decide tu app.
+ * Todos los nombres llevan el prefijo --ui-* / .ui-theme-* para no
+ * chocar con los tokens del proyecto que lo incorpora.
+ * ================================================================== */
+
+/* ------------------------------------------------------------------ *
+ * Tokens de tema
+ * Registrados con @property para que el navegador pueda interpolar
+ * cada color: sin esto, cambiar data-theme sería un salto seco.
+ * ------------------------------------------------------------------ */
+@property --ui-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f4f2ee;
+}
+@property --ui-surface {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --ui-surface-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ece8e1;
+}
+@property --ui-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #1a1917;
+}
+@property --ui-muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #6b6760;
+}
+@property --ui-line {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e5e1d9;
+}
+@property --ui-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #b8752c;
+}
+@property --ui-accent-soft {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f2e2cd;
+}
+@property --ui-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(184, 117, 44, 0.1);
+}
+@property --ui-knob-offset {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+:root {
+  --ui-ease-theme: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-ease-spring: cubic-bezier(0.34, 1.3, 0.5, 1);
+  --ui-theme-duration: 620ms;
+  --ui-theme-fade: 220ms;
+
+  /* Origen del revelado circular; lo sobrescribe ThemeProvider. */
+  --ui-vt-x: 50%;
+  --ui-vt-y: 50%;
+
+  /* Paleta por defecto (día). Edita aquí o pasa `palette` al provider. */
+  --ui-bg: #f4f2ee;
+  --ui-surface: #ffffff;
+  --ui-surface-2: #ece8e1;
+  --ui-text: #1a1917;
+  --ui-muted: #6b6760;
+  --ui-line: #e5e1d9;
+  --ui-accent: #b8752c;
+  --ui-accent-soft: #f2e2cd;
+  --ui-glow: rgba(184, 117, 44, 0.1);
+  --ui-shadow-card: 0 1px 2px rgba(26, 25, 23, 0.04), 0 14px 34px -14px rgba(26, 25, 23, 0.14);
+
+  color-scheme: light;
+
+  transition:
+    --ui-bg var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-surface var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-surface-2 var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-text var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-muted var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-line var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-accent var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-accent-soft var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-glow var(--ui-theme-duration) var(--ui-ease-theme),
+    --ui-knob-offset var(--ui-theme-duration) var(--ui-ease-spring);
+}
+
+:root[data-theme='night'] {
+  --ui-bg: #11141a;
+  --ui-surface: #191e28;
+  --ui-surface-2: #232936;
+  --ui-text: #edf0f5;
+  --ui-muted: #97a0b4;
+  --ui-line: #2b3240;
+  --ui-accent: #e2a55c;
+  --ui-accent-soft: #3a2f1e;
+  --ui-glow: rgba(226, 165, 92, 0.12);
+  --ui-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.34), 0 20px 44px -18px rgba(0, 0, 0, 0.62);
+
+  --ui-knob-offset: 24px;
+
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------ *
+ * ThemeToggle
+ * ------------------------------------------------------------------ */
+.ui-theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+  width: 3.5rem;
+  flex: none;
+  border-radius: 9999px;
+  border: 1px solid var(--ui-line);
+  background-color: var(--ui-surface-2);
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition:
+    background-color var(--ui-theme-duration) var(--ui-ease-theme),
+    border-color var(--ui-theme-duration) var(--ui-ease-theme),
+    box-shadow 200ms var(--ui-ease-theme);
+}
+.ui-theme-toggle:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--ui-bg),
+    0 0 0 4px var(--ui-accent);
+}
+
+.ui-theme-toggle__knob {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  z-index: 1;
+  display: grid;
+  height: 1.5rem;
+  width: 1.5rem;
+  place-items: center;
+  border-radius: 9999px;
+  background-color: var(--ui-surface);
+  color: var(--ui-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 4px 10px -4px rgba(0, 0, 0, 0.28);
+  transform: translateY(-50%) translateX(var(--ui-knob-offset));
+  transition:
+    transform var(--ui-theme-duration) var(--ui-ease-spring),
+    background-color var(--ui-theme-duration) var(--ui-ease-theme),
+    color var(--ui-theme-duration) var(--ui-ease-theme),
+    box-shadow var(--ui-theme-duration) var(--ui-ease-theme);
+}
+
+.ui-theme-toggle__outer {
+  position: absolute;
+  top: 50%;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ui-muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition:
+    color var(--ui-theme-duration) var(--ui-ease-theme),
+    left var(--ui-theme-duration) var(--ui-ease-spring),
+    right var(--ui-theme-duration) var(--ui-ease-spring);
+}
+.ui-theme-toggle[data-night='false'] .ui-theme-toggle__outer {
+  right: 9px;
+}
+.ui-theme-toggle[data-night='true'] .ui-theme-toggle__outer {
+  left: 9px;
+}
+
+/* Los dos glifos están siempre montados y se apilan en la misma celda.
+ * Cuál se ve lo decide [data-night], que se escribe de forma imperativa
+ * antes de capturar el snapshot: si dependiera de React, el snapshot
+ * "nuevo" saldría todavía con el icono viejo. */
+.ui-theme-toggle__glyph {
+  grid-area: 1 / 1;
+  display: block;
+  opacity: 0;
+  transition: opacity 240ms var(--ui-ease-theme);
+}
+.ui-theme-toggle[data-night='false'] .ui-theme-toggle__knob [data-glyph='sun'],
+.ui-theme-toggle[data-night='true'] .ui-theme-toggle__knob [data-glyph='moon'],
+.ui-theme-toggle[data-night='true'] .ui-theme-toggle__outer [data-glyph='sun'],
+.ui-theme-toggle[data-night='false'] .ui-theme-toggle__outer [data-glyph='moon'] {
+  opacity: 1;
+}
+
+/* Sólo el primer toggle montado registra sus View Transitions:
+ * los view-transition-name tienen que ser únicos en el documento. */
+.ui-theme-toggle[data-vt-owner='true'] .ui-theme-toggle__knob {
+  view-transition-name: ui-theme-knob;
+}
+.ui-theme-toggle[data-vt-owner='true'] .ui-theme-toggle__outer {
+  view-transition-name: ui-theme-icon;
+}
+
+/* ------------------------------------------------------------------ *
+ * View Transitions
+ * Todas las reglas van colgadas de html.vt-active (la clase que añade
+ * ThemeProvider durante la transición) para NO interferir con las View
+ * Transitions que ya tenga la app que incorpora el componente:
+ *     ::view-transition-* se selecciona desde <html>, así que
+ *     html.vt-active::view-transition-old(root) funciona.
+ * ------------------------------------------------------------------ */
+@keyframes ui-theme-reveal {
+  from {
+    clip-path: circle(0% at var(--ui-vt-x) var(--ui-vt-y));
+  }
+  to {
+    clip-path: circle(150% at var(--ui-vt-x) var(--ui-vt-y));
+  }
+}
+@keyframes ui-theme-knob-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes ui-theme-knob-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* root: el estado viejo se queda quieto debajo y el nuevo se revela
+   * encima con un clip circular desde el botón. Sin cross-fade, así que
+   * no hay momento "sucio" a mitad de transición. */
+  html.vt-active::view-transition-old(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  html.vt-active::view-transition-new(root) {
+    animation: ui-theme-reveal var(--ui-theme-duration) var(--ui-ease-theme) both;
+    mix-blend-mode: normal;
+  }
+
+  /* knob e icon: el grupo ya los desplaza solos (mismo tamaño en ambos
+   * estados); sólo hay que cross-fadear el contenido. */
+  html.vt-active::view-transition-group(ui-theme-knob),
+  html.vt-active::view-transition-group(ui-theme-icon) {
+    animation-duration: var(--ui-theme-duration);
+    animation-timing-function: var(--ui-ease-spring);
+  }
+  html.vt-active::view-transition-old(ui-theme-knob),
+  html.vt-active::view-transition-old(ui-theme-icon) {
+    animation: ui-theme-knob-out var(--ui-theme-fade) linear both;
+  }
+  html.vt-active::view-transition-new(ui-theme-knob),
+  html.vt-active::view-transition-new(ui-theme-icon) {
+    animation: ui-theme-knob-in 300ms var(--ui-ease-theme) both;
+  }
+}
+
+/* Mientras dura la transición hay que desactivar las transiciones CSS:
+ * si no, el snapshot "nuevo" se captura a medio camino de los colores. */
+html.vt-active,
+html.vt-active * {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    transition: none;
+  }
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

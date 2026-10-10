@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+
+/* Estilos base de la app y utilidades del diseño neumórfico. La paleta de
+   colores vive en theme/palette.css; aquí solo se definen las sombras y las
+   clases que las aplican. */
+
+:root {
+  /* Sombras neumórficas — dependen de --neu-shadow-dark/light (palette.css) */
+  --neu-shadow-raised: 4px 4px 10px var(--neu-shadow-dark), -2px -2px 6px var(--neu-shadow-light);
+  --neu-shadow-pressed: inset 4px 4px 10px var(--neu-shadow-dark), inset -2px -2px 6px var(--neu-shadow-light);
+  --neu-shadow-raised-sm: 2px 2px 5px var(--neu-shadow-dark), -1px -1px 3px var(--neu-shadow-light);
+  --neu-shadow-pressed-sm: inset 2px 2px 5px var(--neu-shadow-dark), inset -1px -1px 3px var(--neu-shadow-light);
+  --neu-shadow-raised-lg: 6px 6px 16px var(--neu-shadow-dark), -2px -2px 6px var(--neu-shadow-light);
+  --neu-elevated: 8px 10px 28px rgba(0, 0, 0, 0.6), -2px -2px 8px var(--neu-shadow-light), 0 0 48px rgba(244, 150, 56, 0.05);
+  --neu-glow-card: 0 0 24px rgba(244, 150, 56, 0.4);
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: rgb(var(--ch-background));
+  color: rgb(var(--ch-on-background));
+}
+
+/* Clases de superficie neumórfica:
+   - neu-flat / neu-raised: elevación estática.
+   - neu-pressed: hundida (inputs, controles).
+   - neu-button-raised: botón que se "hunde" al pulsarlo.
+   - neu-shadow-header / lg / elevated: variantes para cabecera, sombra grande
+     y paneles flotantes.
+   - neu-card-hover: eleva y añade glow naranja al pasar el ratón. */
+.neu-flat {
+  background: rgb(var(--ch-background));
+  box-shadow: var(--neu-shadow-raised);
+}
+
+.neu-pressed {
+  background: rgb(var(--ch-background));
+  box-shadow: var(--neu-shadow-pressed);
+}
+
+.neu-button-raised {
+  background: rgb(var(--ch-background));
+  box-shadow: var(--neu-shadow-raised);
+  transition: all 0.2s ease;
+}
+
+.neu-button-raised:active {
+  box-shadow: var(--neu-shadow-pressed-sm);
+}
+
+.neu-btn-active:active {
+  box-shadow: var(--neu-shadow-pressed-sm);
+}
+
+.neu-raised {
+  box-shadow: var(--neu-shadow-raised);
+}
+
+.neu-shadow-header {
+  box-shadow: var(--neu-shadow-raised);
+}
+
+.neu-shadow-lg {
+  box-shadow: var(--neu-shadow-raised-lg);
+}
+
+.neu-elevated {
+  box-shadow: var(--neu-elevated);
+}
+
+.neu-card-hover {
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.neu-card-hover:hover {
+  box-shadow: var(--neu-shadow-raised), var(--neu-glow-card);
+}
+
+/* Inputs neumórficos: sin borde propio y con anillo de foco del color primario */
+.neu-input {
+  border: none !important;
+  outline: none !important;
+}
+
+.neu-input:focus {
+  box-shadow: inset 4px 4px 10px var(--neu-shadow-dark), inset -2px -2px 6px var(--neu-shadow-light), 0 0 0 1px rgb(var(--ch-primary-container)) !important;
+}
+
+/* Barras de scroll finas para mantener la estética del hardware */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--ch-background));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ch-surface-container-high));
+  border-radius: 10px;
+}
+
+/* Feedback del carrito: rebote del icono del menú + insignia con el recuento */
+@keyframes cart-bump {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1.3) rotate(-8deg);
+  }
+  55% {
+    transform: scale(0.9) rotate(4deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-cart-bump {
+  animation: cart-bump 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
+.buying-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  border-radius: 9999px;
+  background-color: var(--vi-badge-bg);
+  color: var(--vi-badge-on);
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgb(var(--ch-background));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-cart-bump {
+    animation: none;
+  }
+}

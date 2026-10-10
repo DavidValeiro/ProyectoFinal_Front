@@ -1,0 +1,21 @@
+/* ================================================================== *
+ * ui-theme · integración opcional con Tailwind v4
+ * ------------------------------------------------------------------
+ * Expone los tokens --ui-* como utilidades de Tailwind:
+ *     bg-ui-bg · bg-ui-surface · text-ui-text · border-ui-line ...
+ *
+ * Importa este archivo DENTRO de una hoja que Tailwind procese y que ya
+ * cargue Tailwind (globals.css con su @import "tailwindcss";). El prefijo
+ * ui- evita pisar tus propios --color-* (p. ej. --color-surface).
+ * ================================================================== */
+@theme inline {
+  --color-ui-bg: var(--ui-bg);
+  --color-ui-surface: var(--ui-surface);
+  --color-ui-surface-2: var(--ui-surface-2);
+  --color-ui-text: var(--ui-text);
+  --color-ui-muted: var(--ui-muted);
+  --color-ui-line: var(--ui-line);
+  --color-ui-accent: var(--ui-accent);
+  --color-ui-accent-soft: var(--ui-accent-soft);
+  --shadow-ui-card: var(--ui-shadow-card);
+}

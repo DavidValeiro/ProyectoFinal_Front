@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Aplica el tema guardado (día/noche) antes de pintar para evitar el
+         destello de colores equivocados al cargar la página. -->
+    <script>
+      (function(){try{var d=document.documentElement;var v=localStorage.getItem("ui-theme");var t=v==='day'||v==='night'?v:"night";d.setAttribute("data-theme",t);d.style.colorScheme=t}catch(e){}})()
+    </script>
+    <title>MOUSIN — Periféricos de precisión</title>
+    <meta name="description" content="MOUSIN — Periféricos de precisión: teclados mecánicos, ratones ópticos, mandos, audio y herramientas de escritorio con hardware de grado profesional." />
+    <!-- Metadatos para compartir en redes sociales -->
+    <meta property="og:site_name" content="MOUSIN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="MOUSIN — Periféricos de precisión" />
+    <meta property="og:description" content="Teclados mecánicos, ratones ópticos, mandos, audio y herramientas de escritorio con hardware de grado profesional." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Tailwind vía CDN + fuentes (Nunito Sans y iconos Material Symbols) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <!-- Config de Tailwind: mapea los tokens de color --ch-* a clases de color
+         y define radios, espaciados y escalas tipográficas de la marca. Cada
+         color usa rgb(var(--ch-x) / <alpha-value>) para conservar los
+         modificadores de opacidad (por ejemplo bg-primary/20). -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "on-surface-variant": "rgb(var(--ch-on-surface-variant) / <alpha-value>)",
+              "secondary": "rgb(var(--ch-secondary) / <alpha-value>)",
+              "tertiary-container": "rgb(var(--ch-tertiary-container) / <alpha-value>)",
+              "on-tertiary-fixed": "rgb(var(--ch-on-tertiary-fixed) / <alpha-value>)",
+              "secondary-container": "rgb(var(--ch-secondary-container) / <alpha-value>)",
+              "on-secondary-fixed-variant": "rgb(var(--ch-on-secondary-fixed-variant) / <alpha-value>)",
+              "on-background": "rgb(var(--ch-on-background) / <alpha-value>)",
+              "on-surface": "rgb(var(--ch-on-surface) / <alpha-value>)",
+              "on-error": "rgb(var(--ch-on-error) / <alpha-value>)",
+              "surface-dim": "rgb(var(--ch-surface-dim) / <alpha-value>)",
+              "secondary-fixed": "rgb(var(--ch-secondary-fixed) / <alpha-value>)",
+              "background": "rgb(var(--ch-background) / <alpha-value>)",
+              "surface-container-high": "rgb(var(--ch-surface-container-high) / <alpha-value>)",
+              "on-secondary-fixed": "rgb(var(--ch-on-secondary-fixed) / <alpha-value>)",
+              "primary-fixed-dim": "rgb(var(--ch-primary-fixed-dim) / <alpha-value>)",
+              "primary-fixed": "rgb(var(--ch-primary-fixed) / <alpha-value>)",
+              "error": "rgb(var(--ch-error) / <alpha-value>)",
+              "primary-container": "rgb(var(--ch-primary-container) / <alpha-value>)",
+              "inverse-surface": "rgb(var(--ch-inverse-surface) / <alpha-value>)",
+              "surface-tint": "rgb(var(--ch-surface-tint) / <alpha-value>)",
+              "on-tertiary": "rgb(var(--ch-on-tertiary) / <alpha-value>)",
+              "surface-variant": "rgb(var(--ch-surface-variant) / <alpha-value>)",
+              "on-error-container": "rgb(var(--ch-on-error-container) / <alpha-value>)",
+              "on-tertiary-fixed-variant": "rgb(var(--ch-on-tertiary-fixed-variant) / <alpha-value>)",
+              "on-tertiary-container": "rgb(var(--ch-on-tertiary-container) / <alpha-value>)",
+              "tertiary": "rgb(var(--ch-tertiary) / <alpha-value>)",
+              "on-secondary-container": "rgb(var(--ch-on-secondary-container) / <alpha-value>)",
+              "inverse-on-surface": "rgb(var(--ch-inverse-on-surface) / <alpha-value>)",
+              "tertiary-fixed-dim": "rgb(var(--ch-tertiary-fixed-dim) / <alpha-value>)",
+              "surface-bright": "rgb(var(--ch-surface-bright) / <alpha-value>)",
+              "surface-container": "rgb(var(--ch-surface-container) / <alpha-value>)",
+              "surface-container-highest": "rgb(var(--ch-surface-container-highest) / <alpha-value>)",
+              "on-primary": "rgb(var(--ch-on-primary) / <alpha-value>)",
+              "outline": "rgb(var(--ch-outline) / <alpha-value>)",
+              "on-secondary": "rgb(var(--ch-on-secondary) / <alpha-value>)",
+              "inverse-primary": "rgb(var(--ch-inverse-primary) / <alpha-value>)",
+              "on-primary-fixed-variant": "rgb(var(--ch-on-primary-fixed-variant) / <alpha-value>)",
+              "error-container": "rgb(var(--ch-error-container) / <alpha-value>)",
+              "surface-container-low": "rgb(var(--ch-surface-container-low) / <alpha-value>)",
+              "surface": "rgb(var(--ch-surface) / <alpha-value>)",
+              "secondary-fixed-dim": "rgb(var(--ch-secondary-fixed-dim) / <alpha-value>)",
+              "on-primary-container": "rgb(var(--ch-on-primary-container) / <alpha-value>)",
+              "outline-variant": "rgb(var(--ch-outline-variant) / <alpha-value>)",
+              "tertiary-fixed": "rgb(var(--ch-tertiary-fixed) / <alpha-value>)",
+              "on-primary-fixed": "rgb(var(--ch-on-primary-fixed) / <alpha-value>)",
+              "primary": "rgb(var(--ch-primary) / <alpha-value>)",
+              "surface-container-lowest": "rgb(var(--ch-surface-container-lowest) / <alpha-value>)"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "gutter": "24px",
+              "sm": "12px",
+              "margin-mobile": "16px",
+              "xl": "64px",
+              "xs": "4px",
+              "md": "24px",
+              "lg": "40px",
+              "base": "8px",
+              "margin-desktop": "48px"
+            },
+            "fontFamily": {
+              "body-lg": ["Nunito Sans"],
+              "display-lg": ["Nunito Sans"],
+              "headline-md": ["Nunito Sans"],
+              "label-sm": ["Nunito Sans"]
+            },
+            "fontSize": {
+              "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+              "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+              "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+              "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+              "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="bg-background text-on-background min-h-screen flex flex-col overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
